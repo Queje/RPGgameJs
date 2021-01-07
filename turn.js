@@ -1,19 +1,26 @@
 class Turn {
-   constructor(){};
+	constructor(){};
 
-   gameturn(player1,player2) {
-      player1.attack(player2);
-      if (player2.checkstatusdead() == true) {
-         
-         
-      }
-      else {
-         if (player2.hp > 0) {
-         player2.attack(player1);
-            if (player1.checkstatusdead() == true) {
-               
-            };
-         };
-      };
-   };
+	humangameturn(game1) {
+		console.log(`il reste ${game1.turnleft} tours`)
+		alert("commencez la baston ?")
+		const target = game1.selecttarget();
+		game1.humanplayer.attack(target)
+		target.checkstatusdead();
+	};
+
+	ennemisgameturn(game1) {
+		alert("c'est aux ennemis de jouer!")
+		const ennemisfighting = game1.ennemis.sort(() => Math.random() - 0.5);
+		console.log(game1.players);
+		ennemisfighting[0].attack(game1.players[Math.floor(Math.random()*5)]);
+		ennemisfighting[1].attack(game1.players[Math.floor(Math.random()*5)]);
+		ennemisfighting[2].attack(game1.players[Math.floor(Math.random()*5)]);
+		ennemisfighting[3].attack(game1.players[Math.floor(Math.random()*5)]);
+		
+		ennemisfighting.forEach(player => { 
+			player.checkstatusdead();
+		});
+		alert("voulez vous lancer un nouveau tour?")
+	};
 };
