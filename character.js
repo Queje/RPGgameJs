@@ -8,7 +8,7 @@ class Character {
 
 	attack(victim) {
 		victim.hp = victim.hp - this.dmg
-		console.log(`${this.name} a attacqué ${victim.name}, lui a infligé ${this.dmg} points de dégats`)
+		console.log(`${this.name} a attaqué ${victim.name}, lui a infligé ${this.dmg} points de dégats`)
 	};
 
 	checkstatusdead() {
